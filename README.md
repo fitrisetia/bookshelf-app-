@@ -1,26 +1,35 @@
 # Bookshelf App Starter Project
 
-Ini adalah starter project untuk siswa yang sedang mengerjakan tugas akhir kelas Belajar Membuat Front-End Web untuk Pemula.
+Ini adalah starter project untuk siswa yang sedang mengerjakan tugas akhir kelas **Belajar Membuat Front-End Web untuk Pemula** di [Dicoding Indonesia](https://www.dicoding.com/academies/315).
+
+**Bookshelf App** adalah aplikasi sederhana untuk mengelola daftar buku. Dengan aplikasi ini, pengguna dapat menambahkan buku, mencari buku berdasarkan judul, menandai buku yang telah selesai dibaca, dan menghapus buku dari daftar.
+
+## Deskripsi
+
+Proyek ini merupakan **Final Project** dari kelas **Belajar Membuat Front-End Web untuk Pemula** di [Dicoding Indonesia](https://www.dicoding.com/academies/315). Tugas ini bertujuan untuk membuat aplikasi front-end interaktif dengan fitur penyimpanan menggunakan **Local Storage**. 
+
+**Disclaimer**: Layout (HTML dan CSS) telah disediakan sebagai **Starter Pack** dari kursus ini. Fokus pengerjaan berada pada implementasi file JavaScript untuk membuat aplikasi dapat berfungsi.
 
 ## Ketentuan Pengerjaan Tugas
 
-Untuk mempermudah penilaian submission yang dikirim, Anda perlu memahami ketentuan-ketentuan berikut dalam mengerjakan tugas ini.
+Agar mempermudah proses penilaian submission, berikut adalah beberapa ketentuan yang harus diikuti:
 
-- Anda dilarang mengedit atau menghapus atribut `data-testid` pada elemen-elemen HTML.
-- Ini masih berkaitan dengan poin sebelumnya. Jika Anda memiliki kebutuhan seperti styling elemen dan perlu menambahkan atribut seperti class, itu tidak dilarang selama atribut `data-testid` beserta nilainya tidak diubah atau dihapus.
-- Dalam menampilkan data-data buku, Anda wajib memberikan beberapa atribut pada setiap elemennya.
-
-  - `data-bookid`: menampung nilai ID masing-masing buku.
-  - `data-testid`: penanda jenis data buku yang ditampilkan. Berikut daftarnya.
-    - `bookItem`: elemen kontainer yang menampung data-data buku.
-    - `bookItemTitle`: judul buku
-    - `bookItemAuthor`: penulis buku
-    - `bookItemYear`: tahun rilis buku
-    - `bookItemIsCompleteButton`: tombol untuk mengubah kondisi buku dari “Belum selesai dibaca” menjadi “Selesai dibaca” atau sebaliknya.
+- **Dilarang** mengedit atau menghapus atribut `data-testid` pada elemen-elemen HTML.
+- Anda **diperbolehkan** menambahkan atribut seperti `class` untuk kebutuhan styling, selama atribut `data-testid` beserta nilainya **tidak diubah** atau dihapus.
+- Saat menampilkan data buku, tambahkan atribut berikut pada setiap elemen:
+  - `data-bookid`: untuk menyimpan nilai ID masing-masing buku.
+  - `data-testid`: sebagai penanda jenis data buku yang ditampilkan. Berikut daftar atributnya:
+    - `bookItem`: elemen kontainer untuk setiap buku.
+    - `bookItemTitle`: judul buku.
+    - `bookItemAuthor`: penulis buku.
+    - `bookItemYear`: tahun rilis buku.
+    - `bookItemIsCompleteButton`: tombol untuk mengubah status buku (selesai/belum selesai).
     - `bookItemDeleteButton`: tombol untuk menghapus buku.
-    - `bookItemEditButton`: tombol untuk mengubah data buku.
+    - `bookItemEditButton`: tombol untuk mengedit informasi buku.
 
-  Agar pengerjaan tugas lebih mudah, Anda dapat mengikuti templat buku berikut.
+### Templat Buku
+
+Agar lebih mudah, berikut templat elemen HTML untuk setiap buku:
 
 ```html
 <div data-bookid="{{ ID_buku }}" data-testid="bookItem">
