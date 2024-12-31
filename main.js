@@ -8,7 +8,7 @@ document.getElementById('bookForm').addEventListener('submit', function(event) {
   // Ambil data dari form
   const title = document.getElementById('bookFormTitle').value;
   const author = document.getElementById('bookFormAuthor').value;
-  const year = document.getElementById('bookFormYear').value;
+  const year = parseInt(document.getElementById('bookFormYear').value, 10); // Pastikan year sebagai number
   const isComplete = document.getElementById('bookFormIsComplete').checked;
 
   // Cek apakah kita sedang mengedit buku yang sudah ada
@@ -49,6 +49,7 @@ document.getElementById('bookForm').addEventListener('submit', function(event) {
 
   // Reset form
   document.getElementById('bookForm').reset();
+  event.target.reset();
 
   // Render daftar buku
   renderBooks(books);  // Pastikan renderBooks mendapatkan parameter buku yang benar
@@ -65,7 +66,7 @@ document.getElementById('searchBook').addEventListener('submit', function(event)
   const filteredBooks = books.filter((book) => {
     return book.title.toLowerCase().includes(searchQuery) ||
            book.author.toLowerCase().includes(searchQuery) ||
-           book.year.includes(searchQuery);
+           book.year.toString().includes(searchQuery);  // Pastikan pencarian year sesuai
   });
 
   // Render hasil pencarian hanya untuk buku yang dicari
@@ -83,24 +84,28 @@ function renderBooks(filteredBooks = books) {  // Pastikan untuk menggunakan fil
   filteredBooks.forEach((book) => {
     const bookElement = document.createElement('div');
     bookElement.setAttribute('data-bookid', book.id);
+    bookElement.setAttribute('data-testid', 'bookItem');
 
     const titleElement = document.createElement('h3');
     titleElement.textContent = book.title;
+    titleElement.setAttribute('data-testid', 'bookItemTitle');
 
     const authorElement = document.createElement('p');
     authorElement.textContent = `Penulis: ${book.author}`;
+    authorElement.setAttribute('data-testid', 'bookItemAuthor');
 
     const yearElement = document.createElement('p');
     yearElement.textContent = `Tahun: ${book.year}`;
+    yearElement.setAttribute('data-testid', 'bookItemYear');
 
     const buttonGroup = document.createElement('div');
 
-    // Button 'Selesai dibaca'
+    // Button 'Selesai dibaca / Belum selesai dibaca'
     const completeButton = document.createElement('button');
-    completeButton.textContent = 'Selesai dibaca';
+    completeButton.textContent = book.isComplete ? 'Belum selesai dibaca' : 'Selesai dibaca';
+    completeButton.setAttribute('data-testid', 'bookItemIsCompleteButton');
     completeButton.addEventListener('click', () => {
-      book.isComplete = true;
-      // Simpan perubahan ke localStorage
+      book.isComplete = !book.isComplete; // Balik nilai isComplete
       localStorage.setItem('books', JSON.stringify(books));
       renderBooks(books);  // Render ulang daftar buku yang lengkap
     });
@@ -108,6 +113,7 @@ function renderBooks(filteredBooks = books) {  // Pastikan untuk menggunakan fil
     // Button 'Hapus Buku'
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'Hapus Buku';
+    deleteButton.setAttribute('data-testid', 'bookItemDeleteButton');
     deleteButton.addEventListener('click', () => {
       books = books.filter(b => b.id !== book.id);  // Hapus buku dari array
       // Simpan perubahan ke localStorage
