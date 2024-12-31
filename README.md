@@ -1,47 +1,65 @@
-# Bookshelf App Starter Project
+# Bookshelf Apps
 
-Ini adalah starter project untuk siswa yang sedang mengerjakan tugas akhir kelas **Belajar Membuat Front-End Web untuk Pemula** di [Dicoding Indonesia](https://www.dicoding.com/academies/315).
+![Project Image](/images/bookshelfapp.png)
 
-**Bookshelf App** adalah aplikasi sederhana untuk mengelola daftar buku. Dengan aplikasi ini, pengguna dapat menambahkan buku, mencari buku berdasarkan judul, menandai buku yang telah selesai dibaca, dan menghapus buku dari daftar.
+**Bookshelf Apps** adalah **Final Project** dari kelas **Belajar Membuat Front-End Web untuk Pemula** - Proyek Akhir yaitu **Submission: Membangun Bookshelf App** di [Dicoding Indonesia](https://www.dicoding.com/academies/315). Tugas ini bertujuan untuk membuat aplikasi front-end interaktif dengan fitur penyimpanan menggunakan **Local Storage**. 
 
-## Deskripsi
+**Bookshelf App** adalah aplikasi berbasis web yang memungkinkan pengguna untuk mengelola daftar buku mereka. Pengguna dapat menambahkan, mengedit, menghapus, serta mencari buku. Data buku disimpan secara lokal menggunakan `localStorage` agar tetap tersedia meskipun pengguna menutup aplikasi.
 
-Proyek ini merupakan **Final Project** dari kelas **Belajar Membuat Front-End Web untuk Pemula** di [Dicoding Indonesia](https://www.dicoding.com/academies/315). Tugas ini bertujuan untuk membuat aplikasi front-end interaktif dengan fitur penyimpanan menggunakan **Local Storage**. 
+## Fitur
 
-**Disclaimer**: Layout (HTML dan CSS) telah disediakan sebagai **Starter Pack** dari kursus ini. Fokus pengerjaan berada pada implementasi file JavaScript untuk membuat aplikasi dapat berfungsi.
+### 1. **Menambahkan Buku Baru**
+   Pengguna dapat menambahkan buku baru ke dalam daftar mereka dengan informasi berikut:
+   - Judul buku
+   - Pengarang
+   - Tahun terbit
+   - Status selesai dibaca atau belum
+   Buku baru akan ditambahkan ke dalam daftar dan disimpan di `localStorage`.
 
-## Ketentuan Pengerjaan Tugas
+### 2. **Mencari Buku**
+   Pengguna dapat mencari buku berdasarkan judul, pengarang, atau tahun terbit menggunakan form pencarian. Hasil pencarian akan ditampilkan secara dinamis.
 
-Agar mempermudah proses penilaian submission, berikut adalah beberapa ketentuan yang harus diikuti:
+### 3. **Melihat Daftar Buku**
+   Buku yang sudah ditambahkan akan dibagi ke dalam dua kategori:
+   - Buku yang sudah selesai dibaca
+   - Buku yang belum selesai dibaca
 
-- **Dilarang** mengedit atau menghapus atribut `data-testid` pada elemen-elemen HTML.
-- Anda **diperbolehkan** menambahkan atribut seperti `class` untuk kebutuhan styling, selama atribut `data-testid` beserta nilainya **tidak diubah** atau dihapus.
-- Saat menampilkan data buku, tambahkan atribut berikut pada setiap elemen:
-  - `data-bookid`: untuk menyimpan nilai ID masing-masing buku.
-  - `data-testid`: sebagai penanda jenis data buku yang ditampilkan. Berikut daftar atributnya:
-    - `bookItem`: elemen kontainer untuk setiap buku.
-    - `bookItemTitle`: judul buku.
-    - `bookItemAuthor`: penulis buku.
-    - `bookItemYear`: tahun rilis buku.
-    - `bookItemIsCompleteButton`: tombol untuk mengubah status buku (selesai/belum selesai).
-    - `bookItemDeleteButton`: tombol untuk menghapus buku.
-    - `bookItemEditButton`: tombol untuk mengedit informasi buku.
+### 4. **Mengedit Buku**
+   Pengguna dapat mengedit buku yang sudah ditambahkan. Formulir pengeditan akan diisi dengan data buku yang ada, dan setelah selesai, perubahan akan disimpan kembali ke `localStorage`.
 
-### Templat Buku
+### 5. **Menghapus Buku**
+   Setiap buku yang ditampilkan memiliki tombol untuk menghapusnya. Setelah dihapus, perubahan langsung disimpan ke `localStorage`.
 
-Agar lebih mudah, berikut templat elemen HTML untuk setiap buku:
+### 6. **Tombol untuk Menandai Status Buku**
+   Pengguna dapat menandai buku sebagai selesai dibaca atau belum selesai dibaca dengan menekan tombol yang ada pada setiap buku.
 
-```html
-<div data-bookid="{{ ID_buku }}" data-testid="bookItem">
-  <h3 data-testid="bookItemTitle">{{ judul_buku }}</h3>
-  <p data-testid="bookItemAuthor">Penulis: {{ penulis_buku }}</p>
-  <p data-testid="bookItemYear">Tahun: {{ tahun_rilis_buku }}</p>
-  <div>
-    <button data-testid="bookItemIsCompleteButton">{{ tombol_untuk_ubah_kondisi }}</button>
-    <button data-testid="bookItemDeleteButton">{{ tombol_untuk_hapus }}</button>
-    <button data-testid="bookItemEditButton">{{ tombol_untuk_edit }}</button>
-  </div>
-</div>
-```
+## Cara Penggunaan
 
-Selamat mengerjakan dan sukses selalu!
+1. **Menambahkan Buku**
+   - Isi form yang tersedia untuk menambahkan buku baru. Setelah mengisi semua kolom, klik tombol submit untuk menambahkannya ke daftar buku.
+
+2. **Mencari Buku**
+   - Masukkan kata kunci di form pencarian untuk mencari buku berdasarkan judul, pengarang, atau tahun terbit.
+
+3. **Mengedit Buku**
+   - Klik tombol 'Edit Buku' pada buku yang ingin diedit. Formulir akan terisi dengan data buku yang dipilih, kemudian klik 'Submit' untuk menyimpan perubahan.
+
+4. **Menghapus Buku**
+   - Klik tombol 'Hapus Buku' untuk menghapus buku yang tidak diinginkan.
+
+5. **Menandai Buku Selesai**
+   - Gunakan tombol 'Selesai dibaca / Belum selesai dibaca' untuk mengubah status buku apakah sudah selesai dibaca atau belum.
+
+## Struktur Kode
+
+- **`bookForm`**: Form untuk menambahkan dan mengedit buku.
+- **`searchBook`**: Form untuk mencari buku berdasarkan judul, pengarang, atau tahun terbit.
+- **`renderBooks`**: Fungsi untuk menampilkan buku berdasarkan status selesai dibaca dan belum selesai dibaca.
+- **`localStorage`**: Semua data buku disimpan di `localStorage` agar tetap tersedia saat aplikasi dibuka kembali.
+
+## Teknologi yang Digunakan
+
+- HTML
+- CSS
+- JavaScript
+- localStorage
